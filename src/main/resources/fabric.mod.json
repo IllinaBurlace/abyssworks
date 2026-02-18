@@ -3,34 +3,20 @@
 	"id": "abyssworks",
 	"version": "${version}",
 	"name": "AbyssWorks",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Utility mod for AbyssWorks.",
 	"authors": [
-		"Me!"
+		"Illina"
 	],
-	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
 	"license": "CC0-1.0",
 	"icon": "assets/abyssworks/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"com.maskless.abyssworks.AbyssWorks"
-		],
-		"client": [
-			"com.maskless.abyssworks.AbyssWorksClient"
-		],
-		"fabric-datagen": [
-			"com.maskless.abyssworks.AbyssWorksDataGenerator"
 		]
 	},
 	"mixins": [
-		"abyssworks.mixins.json",
-		{
-			"config": "abyssworks.client.mixins.json",
-			"environment": "client"
-		}
+		"abyssworks.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.18.4",
