@@ -13,6 +13,9 @@
 	"entrypoints": {
 		"main": [
 			"com.maskless.abyssworks.AbyssWorks"
+		],
+		"client": [
+			"com.maskless.abyssworks.AbyssWorksClient"
 		]
 	},
 	"mixins": [

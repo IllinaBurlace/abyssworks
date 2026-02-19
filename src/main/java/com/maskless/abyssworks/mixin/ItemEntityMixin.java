@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,10 +17,14 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import com.maskless.abyssworks.items.ItemRegistry;
+
 import miyucomics.hexical.inits.HexicalItems;
 
 @Mixin(ItemEntity.class)
 abstract class ItemEntityMixin extends Entity {
+	int seedlingConversionTimer = Random.create().nextBetweenExclusive(600, 900);
+
 	@Inject(method = "tick", at = @At(value = "TAIL"))
 	private void GummiesToAmethyst(CallbackInfo ci) {
 		if (this.getStack().getItem() != HexicalItems.INSTANCE.getHEX_GUMMY()) {
@@ -30,8 +35,13 @@ abstract class ItemEntityMixin extends Entity {
 		if (block != ThoughtSlurryBlock.INSTANCE) {
 			return;
 		}
-		ItemStack newStack = new ItemStack(net.minecraft.item.Items.AMETHYST_SHARD);
-		this.setStack(newStack);
+		if (seedlingConversionTimer > 0) {
+			seedlingConversionTimer--;
+		}
+		if (seedlingConversionTimer == 0) {
+			ItemStack newStack = new ItemStack(ItemRegistry.AMETHYST_SEEDLING);
+			this.setStack(newStack);
+		}
 	}
 
 	@Shadow

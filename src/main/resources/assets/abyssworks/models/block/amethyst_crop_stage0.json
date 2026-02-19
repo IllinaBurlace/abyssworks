@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cross",
+	"textures": {
+		"cross": "abyssworks:block/fake_amethyst-0"
+	}
+}
