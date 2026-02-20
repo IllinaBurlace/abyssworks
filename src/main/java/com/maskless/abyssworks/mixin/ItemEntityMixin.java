@@ -7,6 +7,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
@@ -35,13 +37,14 @@ abstract class ItemEntityMixin extends Entity {
 		if (block != ThoughtSlurryBlock.INSTANCE) {
 			return;
 		}
-		if (seedlingConversionTimer > 0) {
-			seedlingConversionTimer--;
-		}
 		if (seedlingConversionTimer == 0) {
 			ItemStack newStack = new ItemStack(ItemRegistry.AMETHYST_SEEDLING);
-			this.setStack(newStack);
+			World world = getWorld();
+			Vec3d pos = getPos();
+			ItemScatterer.spawn(world, pos.x, pos.y, pos.z, newStack);
+			this.setDespawnImmediately();
 		}
+		seedlingConversionTimer--;
 	}
 
 	@Shadow
@@ -49,6 +52,9 @@ abstract class ItemEntityMixin extends Entity {
 
 	@Shadow 
 	abstract public void setStack(ItemStack item);
+
+	@Shadow
+	abstract public void setDespawnImmediately();
 
 	public ItemEntityMixin(EntityType<? extends ItemEntity> type, World world) {
 		super(type, world);
