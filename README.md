@@ -8,7 +8,7 @@ Not putting the modpack on github with packwiz or anything because I quite simpl
 - Amethyst Seedlings can be planted on top of Sagely Ice while under Thought Slurry to slowly grow into Crystallized Media.
 
 ## TODO
-- Drop table for Crystallized Media.
+- ~~Drop table for Crystallized Media.~~ Done!
 - Plasmoidal Growbed to use as farmland for Crystallized Media.
 - Essence system (Explanation is out of scope for this readme, will add one with the system)
 - Research system for essence

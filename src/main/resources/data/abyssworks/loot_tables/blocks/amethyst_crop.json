@@ -1,0 +1,299 @@
+{
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "tag": "minecraft:cluster_max_harvestables"
+          }
+        },
+	{
+	  "condition": "minecraft:block_state_property",
+	  "block": "abyssworks:amethyst_crop",
+	  "properties": {
+	    "age": "7"
+	  }
+	}
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hexcasting:amethyst_dust"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 4.0,
+            "min": 1.0
+          },
+          "function": "minecraft:set_count"
+        },
+        {
+          "enchantment": "minecraft:fortune",
+          "formula": "minecraft:ore_drops",
+          "function": "minecraft:apply_bonus"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hexcasting:amethyst_dust"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 2.0,
+            "min": 0.0
+          },
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "tag": "minecraft:cluster_max_harvestables"
+          }
+        },
+        {
+          "chances": [
+            0.25,
+            0.35,
+            0.5,
+            0.75,
+            1.0
+          ],
+          "condition": "minecraft:table_bonus",
+          "enchantment": "minecraft:fortune"
+        },
+	{
+	  "condition": "minecraft:block_state_property",
+	  "block": "abyssworks:amethyst_crop",
+	  "properties": {
+	    "age": "7"
+	  }
+	}
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hexcasting:charged_amethyst"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": 1.0,
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "minecraft:cluster_max_harvestables"
+            }
+          }
+        },
+        {
+          "chance": 0.125,
+          "condition": "minecraft:random_chance"
+        },
+	{
+	  "condition": "minecraft:block_state_property",
+	  "block": "abyssworks:amethyst_crop",
+	  "properties": {
+	    "age": "7"
+	  }
+	}
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "hexcasting:charged_amethyst"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": 1.0,
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "condition": "minecraft:match_tool",
+          "predicate": {
+            "tag": "minecraft:cluster_max_harvestables"
+          }
+        },
+	{
+	  "condition": "minecraft:block_state_property",
+	  "block": "abyssworks:amethyst_crop",
+	  "properties": {
+	    "age": "7"
+	  }
+	}
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": 4.0,
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:silk_touch"
+                }
+              ]
+            }
+          }
+        },
+        {
+	  "condition": "minecraft:inverted",
+	  "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "minecraft:cluster_max_harvestables"
+            }
+	  }
+        },
+	{
+	  "condition": "minecraft:block_state_property",
+	  "block": "abyssworks:amethyst_crop",
+	  "properties": {
+	    "age": "7"
+	  }
+	}
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard"
+        }
+      ],
+      "functions": [
+        {
+          "add": false,
+          "count": {
+            "type": "minecraft:uniform",
+            "max": 2.0,
+            "min": 0.0
+          },
+          "function": "minecraft:set_count"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
