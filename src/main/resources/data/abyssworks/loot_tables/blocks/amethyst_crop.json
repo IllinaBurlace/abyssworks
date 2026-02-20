@@ -69,6 +69,15 @@
               ]
             }
           }
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "condition": "minecraft:match_tool",
+            "predicate": {
+              "tag": "minecraft:cluster_max_harvestables"
+            }
+          }
         }
       ],
       "entries": [
@@ -80,11 +89,7 @@
       "functions": [
         {
           "add": false,
-          "count": {
-            "type": "minecraft:uniform",
-            "max": 2.0,
-            "min": 0.0
-          },
+          "count": 1,
           "function": "minecraft:set_count"
         }
       ],
