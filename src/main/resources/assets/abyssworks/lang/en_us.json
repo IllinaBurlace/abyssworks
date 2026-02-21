@@ -1,4 +1,6 @@
 {
 	"item.abyssworks.amethyst_seedling": "Amethyst Seedling",
-	"block.abyssworks.amethyst_crop": "Crystallized Media"
+
+	"block.abyssworks.amethyst_crop": "Crystallized Media",
+	"block.abyssworks.plasmoidal_dirt": "Plasmoidal Dirt"
 }

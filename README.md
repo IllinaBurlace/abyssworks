@@ -9,7 +9,7 @@ Not putting the modpack on github with packwiz or anything because I quite simpl
 
 ## TODO
 - ~~Drop table for Crystallized Media.~~ Done!
-- Plasmoidal Growbed to use as farmland for Crystallized Media.
+- ~~Plasmoidal Dirt to use as farmland for Crystallized Media.~~ Done!
 - Essence system (Explanation is out of scope for this readme, will add one with the system)
 - Research system for essence
 - Screeching Minds and Media Rigs (again, can't be bothered to explain rn)

@@ -1,0 +1,17 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "building",
+	"key": {
+		"P": {
+			"item": "oneironaut:media_gel"
+		}
+	},
+	"pattern": [
+		"PP",
+		"PP"
+	],
+	"result": {
+		"item": "abyssworks:plasmoidal_dirt"
+	},
+	"show_notification": false
+}

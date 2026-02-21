@@ -45,8 +45,7 @@ public class AmethystCrop extends CropBlock {
 
 	@Override
 	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-		Identifier id = Identifier.of("oneironaut", "media_ice");
-		Block target = Registries.BLOCK.get(id);
+		Block target = BlockRegistry.PLASMOIDAL_DIRT;
 		return floor.isOf(target);
 	}
 
