@@ -26,8 +26,14 @@ public class BlockRegistry {
 	}
 
 	public static final Block AMETHYST_CROP = register(
-			new AmethystCrop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.AMETHYST_CLUSTER)),
-			"amethyst_crop",
-			false
-			);
+		new AmethystCrop(AbstractBlock.Settings.create().nonOpaque().noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.AMETHYST_CLUSTER)),
+		"amethyst_crop",
+		false
+	);
+
+	public static final Block PLASMOIDAL_DIRT = register(
+		new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.GRASS)),
+		"plasmoidal_dirt",
+		true
+	);
 }
