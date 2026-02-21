@@ -60,8 +60,8 @@ abstract class ItemEntityMixin extends Entity {
 		}
 		world.addParticle(
 			new ConjureParticleOptions(colorProvider.getColor(((float)world.getTime()), pos)),
-			pos.x, pos.y, pos.z,
-			world.random.nextFloat() * 0.05 * world.random.nextBetween(-1, 1), world.random.nextFloat() / 3, world.random.nextFloat() * 0.05 * world.random.nextBetween(-1, 1)
+			pos.x, pos.y + 0.5, pos.z,
+			world.random.nextFloat() * 0.05 * world.random.nextBetween(-1, 1), world.random.nextFloat() * 0.05, world.random.nextFloat() * 0.05 * world.random.nextBetween(-1, 1)
 		);
 		seedlingConversionTimer++;
 	}
