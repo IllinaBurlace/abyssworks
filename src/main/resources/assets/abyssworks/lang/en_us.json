@@ -1,6 +1,18 @@
 {
 	"item.abyssworks.amethyst_seedling": "Amethyst Seedling",
 
+	"item.abyssworks.essence_hex": "Hex Essence",
+	"item.abyssworks.essence_earth": "Earth Essence",
+	"item.abyssworks.essence_air": "Air Essence",
+	"item.abyssworks.essence_water": "Water Essence",
+	"item.abyssworks.essence_fire": "Fire Essence",
+	"item.abyssworks.essence_metal": "Metal Essence",
+	"item.abyssworks.essence_precious": "Precious Essence",
+	"item.abyssworks.essence_life": "Life Essence",
+	"item.abyssworks.essence_end": "End Essence",
+
 	"block.abyssworks.amethyst_crop": "Crystallized Media",
-	"block.abyssworks.plasmoidal_dirt": "Plasmoidal Dirt"
+	"block.abyssworks.plasmoidal_dirt": "Plasmoidal Dirt",
+
+	"itemGroup.abyssworks": "AbyssWorks"
 }
