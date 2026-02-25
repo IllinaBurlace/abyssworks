@@ -1,0 +1,32 @@
+{
+	"type": "minecraft:block",
+	"pools": [
+		{
+			"rolls": 1.0,
+			"entries": [
+				{
+					"type": "minecraft:item",
+					"name": "abyssworks:essence_jar",
+					"functions": [
+						{
+							"function": "minecraft:copy_nbt",
+							"source": "block_entity",
+							"ops": [
+								{
+									"source": "essence",
+									"target": "BlockEntityTag.essence",
+									"op": "replace"
+								},
+								{
+									"source": "count",
+									"target": "BlockEntityTag.count",
+									"op": "replace"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

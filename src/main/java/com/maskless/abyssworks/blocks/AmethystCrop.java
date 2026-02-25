@@ -62,6 +62,7 @@ public class AmethystCrop extends CropBlock {
 		);
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public FluidState getFluidState(BlockState state) {
 		return ThoughtSlurry.STILL_FLUID.getDefaultState();

@@ -31,6 +31,7 @@ public class ItemRegistry {
 			itemGroup.add(ItemRegistry.ESSENCE_PRECIOUS);
 			itemGroup.add(ItemRegistry.ESSENCE_LIFE);
 			itemGroup.add(ItemRegistry.ESSENCE_END);
+			itemGroup.add(BlockRegistry.ESSENCE_JAR.asItem());
 		});
 	}
 	

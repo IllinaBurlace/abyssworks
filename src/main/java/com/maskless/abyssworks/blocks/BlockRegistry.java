@@ -36,4 +36,10 @@ public class BlockRegistry {
 		"plasmoidal_dirt",
 		true
 	);
+
+	public static final Block ESSENCE_JAR = register(
+		new EssenceJar(AbstractBlock.Settings.create().nonOpaque().strength(0.5f, 64f)),
+		"essence_jar", 
+		true
+	);
 }
