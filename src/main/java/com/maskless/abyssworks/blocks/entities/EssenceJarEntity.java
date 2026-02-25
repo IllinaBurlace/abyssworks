@@ -1,6 +1,6 @@
 package com.maskless.abyssworks.blocks.entities;
 
-import com.maskless.abyssworks.items.ItemRegistry;
+import com.maskless.abyssworks.items.Essences;
 
 import com.maskless.abyssworks.AbyssWorks;
 
@@ -20,18 +20,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EssenceJarEntity extends BlockEntity {
-	public static final Item[] VALID_ITEMS = {
-		ItemRegistry.ESSENCE_HEX,
-		ItemRegistry.ESSENCE_EARTH,
-		ItemRegistry.ESSENCE_AIR,
-		ItemRegistry.ESSENCE_WATER,
-		ItemRegistry.ESSENCE_FIRE,
-		ItemRegistry.ESSENCE_METAL,
-		ItemRegistry.ESSENCE_PRECIOUS,
-		ItemRegistry.ESSENCE_LIFE,
-		ItemRegistry.ESSENCE_END,
-	};
-
 	public Item essence = Items.AIR;
 	public int count = 0;
 
@@ -77,7 +65,7 @@ public class EssenceJarEntity extends BlockEntity {
 		}
 		lastClickTime = 0;
 		ItemStack item = player.getStackInHand(hand);
-		for (Item i : VALID_ITEMS) {
+		for (Item i : Essences.ESSENCES) {
 			if (item.getItem() != i) continue;
 			if (essence != Items.AIR && essence != item.getItem()) break;
 			if (essence == Items.AIR)
