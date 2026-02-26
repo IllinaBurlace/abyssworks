@@ -15,5 +15,7 @@
 	"block.abyssworks.plasmoidal_dirt": "Plasmoidal Dirt",
 	"block.abyssworks.essence_jar": "Essence Jar",
 
-	"itemGroup.abyssworks": "AbyssWorks"
+	"itemGroup.abyssworks": "AbyssWorks",
+
+	"hexcasting.action.abyssworks:extract_essence": "Extract Essence"
 }

@@ -1,5 +1,7 @@
 package com.maskless.abyssworks.items;
 
+import com.maskless.abyssworks.registry.ItemRegistry;
+
 import net.minecraft.item.Item;
 
 public class Essences {

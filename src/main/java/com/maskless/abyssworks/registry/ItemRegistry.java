@@ -1,7 +1,6 @@
-package com.maskless.abyssworks.items;
+package com.maskless.abyssworks.registry;
 
 import com.maskless.abyssworks.AbyssWorks;
-import com.maskless.abyssworks.blocks.BlockRegistry;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;

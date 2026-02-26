@@ -1,6 +1,7 @@
 package com.maskless.abyssworks.blocks.entities;
 
 import com.maskless.abyssworks.items.Essences;
+import com.maskless.abyssworks.registry.BlockEntityRegistry;
 
 import com.maskless.abyssworks.AbyssWorks;
 

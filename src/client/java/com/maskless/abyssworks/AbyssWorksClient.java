@@ -1,7 +1,7 @@
 package com.maskless.abyssworks;
 
-import com.maskless.abyssworks.blocks.BlockRegistry;
-import com.maskless.abyssworks.blocks.entities.BlockEntityRegistry;
+import com.maskless.abyssworks.registry.BlockRegistry;
+import com.maskless.abyssworks.registry.BlockEntityRegistry;
 import com.maskless.abyssworks.render.EssenceJarEntityRenderer;
 
 import net.fabricmc.api.ClientModInitializer;

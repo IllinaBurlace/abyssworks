@@ -1,6 +1,9 @@
-package com.maskless.abyssworks.blocks;
+package com.maskless.abyssworks.registry;
 
 import com.maskless.abyssworks.AbyssWorks;
+
+import com.maskless.abyssworks.blocks.AmethystCrop;
+import com.maskless.abyssworks.blocks.EssenceJar;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

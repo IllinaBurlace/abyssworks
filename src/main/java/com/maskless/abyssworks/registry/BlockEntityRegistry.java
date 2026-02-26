@@ -1,7 +1,6 @@
-package com.maskless.abyssworks.blocks.entities;
+package com.maskless.abyssworks.registry;
 
-
-import com.maskless.abyssworks.blocks.BlockRegistry;
+import com.maskless.abyssworks.blocks.entities.EssenceJarEntity;
 
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;

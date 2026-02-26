@@ -1,6 +1,7 @@
 package com.maskless.abyssworks.blocks;
 
-import com.maskless.abyssworks.items.ItemRegistry;
+import com.maskless.abyssworks.registry.ItemRegistry;
+import com.maskless.abyssworks.registry.BlockRegistry;
 
 import net.beholderface.oneironaut.block.ThoughtSlurry;
 import net.minecraft.block.AbstractBlock;

@@ -5,9 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.maskless.abyssworks.blocks.BlockRegistry;
-import com.maskless.abyssworks.blocks.entities.BlockEntityRegistry;
-import com.maskless.abyssworks.items.ItemRegistry;
+import com.maskless.abyssworks.registry.*;
 
 
 public class AbyssWorks implements ModInitializer {
@@ -20,5 +18,8 @@ public class AbyssWorks implements ModInitializer {
 		ItemRegistry.initialize();
 		BlockRegistry.initialize();
 		BlockEntityRegistry.initialize();
+		PatternRegistry.initialize();
+		RecipeRegistry.initialize();
 	}
 }
+
