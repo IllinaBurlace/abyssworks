@@ -37,7 +37,7 @@ public class ChancedResult {
 		int count = stack.getCount() * times;
 		for (int roll = 0; roll < times; roll++) {
 			if (r.nextFloat() > chance)
-				count--;
+				count -= stack.getCount();
 		}
 		if (count == 0)
 			return ItemStack.EMPTY;
