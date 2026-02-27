@@ -5,9 +5,9 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 
 public class IntermediateInv implements Inventory {
-	ItemStack stack;
+	ItemStack[] stack;
 
-	public IntermediateInv(ItemStack stack) {
+	public IntermediateInv(ItemStack... stack) {
 		this.stack = stack;
 	}
 
@@ -22,12 +22,12 @@ public class IntermediateInv implements Inventory {
 
 	@Override
 	public ItemStack getStack(int slot) {
-		return stack;
+		return stack[slot];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return stack.isEmpty();
+		return stack.equals(new ItemStack[9]);
 	}
 
 	@Override
@@ -37,22 +37,26 @@ public class IntermediateInv implements Inventory {
 
 	@Override
 	public ItemStack removeStack(int slot) {
-		stack = ItemStack.EMPTY;
-		return ItemStack.EMPTY;
+		ItemStack removed = stack[slot].copyAndEmpty();
+		return removed;
 	}
 
 	@Override
 	public ItemStack removeStack(int slot, int count) {
-		return ItemStack.EMPTY;
+		stack[slot].decrement(count);
+		ItemStack removed = stack[slot].copy();
+		removed.setCount(count);
+		return removed;
 	}
 
 	@Override
 	public void setStack(int slot, ItemStack stack) {
+		this.stack[slot] = stack;
 	}
 
 	@Override
 	public int size() {
-		return 1;
+		return 9;
 	}
 }
 

@@ -21,6 +21,6 @@ public class ExtractionRecipe extends SpellRecipe {
 		if (inv.isEmpty())
 			return false;
 		return ingredients.get(0)
-			.test(inv.getStack(0));
+			.testWithCount(inv.getStack(0));
 	}
 }
