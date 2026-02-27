@@ -33,9 +33,9 @@ public class ChancedResult {
 		return chance;
 	}
 
-	public ItemStack rollOutput() {
-		int count = stack.getCount();
-		for (int roll = 0; roll < stack.getCount(); roll++) {
+	public ItemStack rollOutput(int times) {
+		int count = stack.getCount() * times;
+		for (int roll = 0; roll < times; roll++) {
 			if (r.nextFloat() > chance)
 				count--;
 		}

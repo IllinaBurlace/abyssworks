@@ -16,6 +16,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadItem;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
@@ -58,19 +59,33 @@ public class Extract implements SpellAction {
 		@Override
 		public void cast(CastingEnvironment ctx) {
 			Vec3d pos = item.getPos();
+			int count = item.getStack().getCount();
+			int cost = recipe.getInput().get(0).getCount();
+			
+			ItemStack rem = ItemStack.EMPTY;
+			if (count % cost != 0)
+				rem = new ItemStack(item.getStack().getItem(), count % cost);
 			item.setDespawnImmediately();
 
 			ServerWorld world = ctx.getWorld();
 
-			recipe.rollResults().forEach(res -> {
+			recipe.rollResults(count / cost).forEach(res -> {
 				ItemScatterer.spawn(
-					world,
+					world, 
 					pos.x,
 					pos.y,
-					pos.z,
+					pos.z, 
 					res
 				);
 			});
+
+			ItemScatterer.spawn(
+				world, 
+				pos.x, 
+				pos.y, 
+				pos.z, 
+				rem
+			);
 		}
 
 		@Override

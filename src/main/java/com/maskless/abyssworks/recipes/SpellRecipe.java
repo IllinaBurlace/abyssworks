@@ -6,7 +6,6 @@ import java.util.List;
 import com.maskless.abyssworks.recipes.SpellRecipeBuilder.SpellRecipeParams;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
@@ -16,7 +15,7 @@ import net.minecraft.util.collection.DefaultedList;
 
 public abstract class SpellRecipe implements Recipe<IntermediateInv> {
 	protected Identifier id;
-	protected DefaultedList<Ingredient> ingredients;
+	protected DefaultedList<IngredientCounted> ingredients;
 	protected DefaultedList<ChancedResult> results;
 	protected long mediaCost;
 
@@ -36,7 +35,7 @@ public abstract class SpellRecipe implements Recipe<IntermediateInv> {
 		return results;
 	}
 
-	public List<Ingredient> getInput() {
+	public List<IngredientCounted> getInput() {
 		return ingredients;
 	}
 
@@ -44,18 +43,17 @@ public abstract class SpellRecipe implements Recipe<IntermediateInv> {
 		return mediaCost;
 	}
 
-	public List<ItemStack> rollResults() {
-		return rollResults(this.getResults());
+	public List<ItemStack> rollResults(int times) {
+		return rollResults(this.getResults(), times);
 	}
 
-	public List<ItemStack> rollResults(List<ChancedResult> rollable) {
-		List<ItemStack> results = new ArrayList<>();
-		for (int i = 0; i < rollable.size(); i++) {
-			ChancedResult output = rollable.get(i);
-			ItemStack stack = output.rollOutput();
+	public List<ItemStack> rollResults(List<ChancedResult> rollable, int times) {
+		ArrayList<ItemStack> results = new ArrayList<>();
+		rollable.forEach(res -> {
+			ItemStack stack = res.rollOutput(times);
 			if (!stack.isEmpty())
 				results.add(stack);
-		}
+		});
 		return results;
 	}
 

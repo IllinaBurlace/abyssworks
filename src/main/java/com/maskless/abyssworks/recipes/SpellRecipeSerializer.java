@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import com.maskless.abyssworks.recipes.SpellRecipeBuilder.SpellRecipeFactory;
 
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
@@ -23,11 +22,11 @@ public class SpellRecipeSerializer<T extends SpellRecipe> implements RecipeSeria
 	@Override
 	public T read(Identifier id, JsonObject json) {
 		SpellRecipeBuilder<T> builder = new SpellRecipeBuilder<>(factory, id); 
-		DefaultedList<Ingredient> ingredients = DefaultedList.of();
+		DefaultedList<IngredientCounted> ingredients = DefaultedList.of();
 		DefaultedList<ChancedResult> results = DefaultedList.of();
 
 		for (JsonElement je : JsonHelper.getArray(json, "ingredients")) {
-			ingredients.add(Ingredient.fromJson(je));
+			ingredients.add(IngredientCounted.fromJson(je));
 		}
 
 		for (JsonElement je : JsonHelper.getArray(json, "results")) {
@@ -46,12 +45,12 @@ public class SpellRecipeSerializer<T extends SpellRecipe> implements RecipeSeria
 
 	@Override
 	public T read(Identifier id, PacketByteBuf buf) {
-		DefaultedList<Ingredient> ingredients = DefaultedList.of();
+		DefaultedList<IngredientCounted> ingredients = DefaultedList.of();
 		DefaultedList<ChancedResult> results = DefaultedList.of();
 
 		int size = buf.readInt();
 		for (int i = 0; i < size; i++)
-			ingredients.add(Ingredient.fromPacket(buf));
+			ingredients.add(IngredientCounted.read(buf));
 
 		size = buf.readInt();
 		for (int i = 0; i < size; i++)
@@ -66,7 +65,7 @@ public class SpellRecipeSerializer<T extends SpellRecipe> implements RecipeSeria
 
 	@Override
 	public void write(PacketByteBuf buf, T recipe) {
-		List<Ingredient> ingredients = recipe.ingredients;
+		List<IngredientCounted> ingredients = recipe.ingredients;
 		List<ChancedResult> results = recipe.results;
 
 		buf.writeInt(ingredients.size());

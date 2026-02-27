@@ -1,7 +1,6 @@
 package com.maskless.abyssworks.recipes;
 
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 
@@ -16,7 +15,7 @@ public class SpellRecipeBuilder<T extends SpellRecipe> {
 		this.factory = factory;
 	}
 
-	public SpellRecipeBuilder<T> withIngredients(DefaultedList<Ingredient> ingredients) {
+	public SpellRecipeBuilder<T> withIngredients(DefaultedList<IngredientCounted> ingredients) {
 		params.ingredients = ingredients;
 		return this;
 	}
@@ -42,7 +41,7 @@ public class SpellRecipeBuilder<T extends SpellRecipe> {
 
 	public static class SpellRecipeParams {
 		protected Identifier id;
-		protected DefaultedList<Ingredient> ingredients;
+		protected DefaultedList<IngredientCounted> ingredients;
 		protected DefaultedList<ChancedResult> results;
 		protected long mediaCost;
 
