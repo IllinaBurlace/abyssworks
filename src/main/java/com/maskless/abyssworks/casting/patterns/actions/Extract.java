@@ -3,7 +3,6 @@ package com.maskless.abyssworks.casting.patterns.actions;
 import java.util.List;
 
 import com.maskless.abyssworks.recipes.IntermediateInv;
-import com.maskless.abyssworks.recipes.IngredientCounted;
 import com.maskless.abyssworks.recipes.extraction.ExtractionRecipe;
 
 import at.petrak.hexcasting.api.casting.OperatorUtils;
@@ -61,12 +60,7 @@ public class Extract implements SpellAction {
 		public void cast(CastingEnvironment ctx) {
 			Vec3d pos = item.getPos();
 			int count = item.getStack().getCount();
-			int cost = 0;
-
-			for (IngredientCounted ingredient : recipe.getInput()) {
-				if (ingredient.testWithCount(item.getStack()))
-					cost = ingredient.getCount();
-			}
+			int cost = recipe.getInput().get(0).getCount();
 			
 			ItemStack rem = ItemStack.EMPTY;
 			if (count % cost != 0)
