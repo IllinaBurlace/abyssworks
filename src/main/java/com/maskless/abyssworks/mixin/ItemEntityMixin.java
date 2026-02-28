@@ -45,7 +45,7 @@ abstract class ItemEntityMixin extends Entity {
 			return;
 		}
 		if (seedlingConversionTimer == seedlingTarget) {
-			ItemStack newStack = new ItemStack(ItemRegistry.AMETHYST_SEEDLING);
+			ItemStack newStack = new ItemStack(ItemRegistry.AMETHYST_SEEDLING, this.getStack().getCount());
 			World world = getWorld();
 			Vec3d pos = getPos();
 			ItemScatterer.spawn(world, pos.x, pos.y, pos.z, newStack);
