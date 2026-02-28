@@ -1,6 +1,8 @@
 package com.maskless.abyssworks.registry;
 
 import com.maskless.abyssworks.AbyssWorks;
+import com.maskless.abyssworks.recipes.combination.CombinationRecipe;
+import com.maskless.abyssworks.recipes.combination.CombinationRecipeSerializer;
 import com.maskless.abyssworks.recipes.extraction.ExtractionRecipe;
 import com.maskless.abyssworks.recipes.extraction.ExtractionRecipeSerializer;
 
@@ -26,4 +28,6 @@ public class RecipeRegistry {
 	public static final RecipeSerializer<?> EXTRACTION_SERIALIZER = registerSerializer("essence_extraction", ExtractionRecipeSerializer.INSTANCE); 
 	public static final RecipeType<?> EXTRACTION_TYPE = registerType("essence_extraction", ExtractionRecipe.Type.INSTANCE);
 
+	public static final RecipeSerializer<?> COMBINATION_SERIALIZER = registerSerializer("essence_combination", CombinationRecipeSerializer.INSTANCE);
+	public static final RecipeType<?> COMBINATION_TYPE = registerType("essence_combination", CombinationRecipe.Type.INSTANCE);
 }

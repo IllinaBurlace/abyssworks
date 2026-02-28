@@ -1,14 +1,22 @@
 package com.maskless.abyssworks.recipes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 
 public class IntermediateInv implements Inventory {
-	ItemStack[] stack;
+	ArrayList<ItemStack> stack = new ArrayList<>();
+
+	public IntermediateInv(List<ItemStack> stacks) {
+		stack.addAll(stacks);
+	}
 
 	public IntermediateInv(ItemStack... stack) {
-		this.stack = stack;
+		for (ItemStack item : stack)
+			this.stack.add(item);
 	}
 
 	@Override
@@ -22,12 +30,12 @@ public class IntermediateInv implements Inventory {
 
 	@Override
 	public ItemStack getStack(int slot) {
-		return stack[slot];
+		return stack.get(slot);
 	}
 
 	@Override
 	public boolean isEmpty() {
-		return stack.equals(new ItemStack[9]);
+		return stack.isEmpty();
 	}
 
 	@Override
@@ -37,26 +45,25 @@ public class IntermediateInv implements Inventory {
 
 	@Override
 	public ItemStack removeStack(int slot) {
-		ItemStack removed = stack[slot].copyAndEmpty();
-		return removed;
+		return stack.get(slot).copyAndEmpty();
 	}
 
 	@Override
 	public ItemStack removeStack(int slot, int count) {
-		stack[slot].decrement(count);
-		ItemStack removed = stack[slot].copy();
+		stack.get(slot).decrement(count);
+		ItemStack removed = stack.get(slot).copy();
 		removed.setCount(count);
 		return removed;
 	}
 
 	@Override
 	public void setStack(int slot, ItemStack stack) {
-		this.stack[slot] = stack;
+		this.stack.set(slot, stack);
 	}
 
 	@Override
 	public int size() {
-		return 9;
+		return stack.size();
 	}
 }
 

@@ -1,0 +1,14 @@
+{
+	"type": "abyssworks:essence_combination",
+
+	"ingredients": [
+		{ "item": "abyssworks:essence_life", "count": 1 },
+		{ "item": "abyssworks:essence_earth", "count": 2 }
+	],
+
+	"results": [
+		{ "item": "minecraft:oak_sapling", "count": 1, "chance": 1 }
+	],
+
+	"mediaCost": 50000
+}
