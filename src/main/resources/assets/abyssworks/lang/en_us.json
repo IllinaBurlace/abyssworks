@@ -17,5 +17,9 @@
 
 	"itemGroup.abyssworks": "AbyssWorks",
 
-	"hexcasting.action.abyssworks:extract_essence": "Extract Essence"
+	"hexcasting.action.abyssworks:extract_essence": "Extract Essence",
+	"hexcasting.action.abyssworks:combine_entities": "Combine Essences (Item)",
+
+	"hexcasting.mishap.invalid_value.class.abyssworks:itemlist.valid": "list of item entities",
+	"hexcasting.mishap.invalid_value.class.abyssworks:combrecipe.valid": "valid combination recipe"
 }

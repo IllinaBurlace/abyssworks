@@ -1,9 +1,11 @@
 package com.maskless.abyssworks.recipes.combination;
 
+import com.maskless.abyssworks.recipes.IngredientCounted;
 import com.maskless.abyssworks.recipes.IntermediateInv;
 import com.maskless.abyssworks.recipes.SpellRecipe;
 import com.maskless.abyssworks.recipes.SpellRecipeBuilder.SpellRecipeParams;
 
+import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.world.World;
 
@@ -20,9 +22,11 @@ public class CombinationRecipe extends SpellRecipe {
 	public boolean matches(IntermediateInv inv, World world) {
 		boolean matches = !inv.isEmpty();
 		for (int i = 0; i < ingredients.size(); i++) {
+			IngredientCounted ing = ingredients.get(i);
 			boolean has = false;
 			for (int j = 0; j < inv.size(); j++) {
-				has |= ingredients.get(i).testWithCount(inv.getStack(j));
+				ItemStack item = inv.getStack(j);
+				has |= ing.test(item) && ing.getCount() == item.getCount();
 			}
 			matches &= has;
 		}

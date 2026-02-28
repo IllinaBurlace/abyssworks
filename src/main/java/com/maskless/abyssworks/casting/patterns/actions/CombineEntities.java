@@ -34,13 +34,14 @@ public class CombineEntities implements SpellAction {
 
 	public SpellAction.Result execute(List<? extends Iota> stack, CastingEnvironment ctx) {
 		SpellList list = OperatorUtils.getList(stack, 0, getArgc());
+		if (list.size() == 0) throw MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
 		SpellListIterator it = list.iterator();
 		ArrayList<ItemEntity> items = new ArrayList<>();
 		ArrayList<ItemStack> inputs = new ArrayList<>();
 
-		MishapInvalidIota mishapBadList = MishapInvalidIota.ofType(list.getCar(), 1, "list of item entities");
 		while (it.hasNext()) {
 			Iota i = it.next();
+			MishapInvalidIota mishapBadList = MishapInvalidIota.ofType(i, 1, "abyssworks:itemlist.valid");
 			if (i.getType() != EntityIota.TYPE)
 				throw mishapBadList;
 
@@ -54,21 +55,13 @@ public class CombineEntities implements SpellAction {
 
 		ServerWorld world = ctx.getWorld();
 
-		MishapInvalidIota mishapBadRecipe = MishapInvalidIota.ofType(list.getCar(), 1, "valid combination recipe");
+		MishapInvalidIota mishapBadRecipe = MishapInvalidIota.ofType(list.getCar(), 1, "abyssworks:combrecipe.valid");
 
 		CombinationRecipe recipe = world.getRecipeManager().getFirstMatch(
 			CombinationRecipe.Type.INSTANCE, 
 			new IntermediateInv(List.copyOf(inputs)), 
 			world
 		).orElseThrow(() -> mishapBadRecipe);
-
-		inputs.forEach(in -> {
-			recipe.getInput().forEach(inRec -> {
-				if (inRec.test(in))
-					if (inRec.getCount() != in.getCount())
-						throw mishapBadRecipe;
-			});
-		});
 
 		Vec3d outPos = OperatorUtils.getVec3(stack, 1, getArgc());
 
