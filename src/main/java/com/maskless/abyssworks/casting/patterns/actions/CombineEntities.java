@@ -38,7 +38,8 @@ public class CombineEntities implements SpellAction {
 		SpellList list = OperatorUtils.getList(stack, 0, getArgc());
 		if (list.size() == 0) throw MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
 
-		Function<Iota, ItemEntity> iotaToItem = i -> iotaToItem(i, stack);
+		MishapInvalidIota mishap = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
+		Function<Iota, ItemEntity> iotaToItem = i -> iotaToItem(i, stack, mishap);
 		List<ItemEntity> items = StreamSupport.stream(list.spliterator(), false).map(iotaToItem).collect(Collectors.toList());
 
 		Function<ItemEntity, ItemStack> entToStack = i -> i.getStack();
@@ -46,13 +47,11 @@ public class CombineEntities implements SpellAction {
 
 		ServerWorld world = ctx.getWorld();
 
-		MishapInvalidIota mishapBadRecipe = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:combrecipe.valid");
-
 		CombinationRecipe recipe = world.getRecipeManager().getFirstMatch(
 			CombinationRecipe.Type.INSTANCE, 
 			new IntermediateInv(List.copyOf(inputs)), 
 			world
-		).orElseThrow(() -> mishapBadRecipe);
+		).orElseThrow(() -> MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:combrecipe.valid"));
 
 		Vec3d outPos = OperatorUtils.getVec3(stack, 1, getArgc());
 
@@ -64,8 +63,7 @@ public class CombineEntities implements SpellAction {
 		);
 	}
 
-	public ItemEntity iotaToItem(Iota iota, List<? extends Iota> stack) {
-		MishapInvalidIota mishap = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
+	public ItemEntity iotaToItem(Iota iota, List<? extends Iota> stack, MishapInvalidIota mishap) {
 		if (!(iota.getType() == EntityIota.TYPE))
 			throw mishap;
 		Entity ent = ((EntityIota)iota).getEntity();
