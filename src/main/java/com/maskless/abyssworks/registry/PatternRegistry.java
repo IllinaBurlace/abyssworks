@@ -3,6 +3,7 @@ package com.maskless.abyssworks.registry;
 
 import com.maskless.abyssworks.AbyssWorks;
 import com.maskless.abyssworks.casting.patterns.actions.CombineEntities;
+import com.maskless.abyssworks.casting.patterns.actions.CombineJars;
 import com.maskless.abyssworks.casting.patterns.actions.Extract;
 
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
@@ -29,4 +30,6 @@ public class PatternRegistry {
 	public static final ActionRegistryEntry EXTRACT_ESSENCE = register("extract_essence", "qaqqqqqwaeaeaeaeaea", HexDir.EAST, new Extract());
 
 	public static final ActionRegistryEntry COMBINE_ENTITIES = register("combine_entities", "qaqwawqwwawwqwwa", HexDir.NORTH_EAST, new CombineEntities());
+
+	public static final ActionRegistryEntry COMBINE_JARS = register("combine_jars", "ddwwddwwddw", HexDir.NORTH_EAST, new CombineJars());
 }

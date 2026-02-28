@@ -39,7 +39,7 @@ public class CombineEntities implements SpellAction {
 		if (list.size() == 0) throw MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
 
 		MishapInvalidIota mishap = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
-		Function<Iota, ItemEntity> iotaToItem = i -> iotaToItem(i, stack, mishap);
+		Function<Iota, ItemEntity> iotaToItem = i -> iotaToItem(i, mishap);
 		List<ItemEntity> items = StreamSupport.stream(list.spliterator(), false).map(iotaToItem).collect(Collectors.toList());
 
 		Function<ItemEntity, ItemStack> entToStack = i -> i.getStack();
@@ -63,8 +63,8 @@ public class CombineEntities implements SpellAction {
 		);
 	}
 
-	public ItemEntity iotaToItem(Iota iota, List<? extends Iota> stack, MishapInvalidIota mishap) {
-		if (!(iota.getType() == EntityIota.TYPE))
+	public ItemEntity iotaToItem(Iota iota, MishapInvalidIota mishap) {
+		if (iota.getType() != EntityIota.TYPE)
 			throw mishap;
 		Entity ent = ((EntityIota)iota).getEntity();
 		if (!(ent instanceof ItemEntity))

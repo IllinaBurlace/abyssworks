@@ -18,8 +18,13 @@
 	"itemGroup.abyssworks": "AbyssWorks",
 
 	"hexcasting.action.abyssworks:extract_essence": "Extract Essence",
-	"hexcasting.action.abyssworks:combine_entities": "Combine Essences (Item)",
+	"hexcasting.action.abyssworks:combine_entities": "Combine Essences (Items)",
+	"hexcasting.action.abyssworks:combine_jars": "Combine Essences (Jars)",
 
 	"hexcasting.mishap.invalid_value.class.abyssworks:itemlist.valid": "list of item entities",
-	"hexcasting.mishap.invalid_value.class.abyssworks:combrecipe.valid": "valid combination recipe"
+	"hexcasting.mishap.invalid_value.class.abyssworks:combrecipe.valid": "valid combination recipe",
+
+	"hexcasting.mishap.invalid_value.class.abyssworks:jars": "list containing the positions of essence jars",
+	"hexcasting.mishap.invalid_value.class.abyssworks:ratios": "valid combination recipe",
+	"hexcasting.mishap.bad_block.class.abyssworks:notEnoughItems": "enough essence in jar"
 }
