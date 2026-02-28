@@ -1,7 +1,9 @@
 package com.maskless.abyssworks.casting.patterns.actions;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import com.maskless.abyssworks.recipes.IntermediateInv;
 import com.maskless.abyssworks.recipes.combination.CombinationRecipe;
@@ -10,7 +12,6 @@ import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
 import at.petrak.hexcasting.api.casting.RenderedSpell;
 import at.petrak.hexcasting.api.casting.SpellList;
-import at.petrak.hexcasting.api.casting.SpellList.SpellListIterator;
 import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.OperationResult;
@@ -19,6 +20,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota;
 import at.petrak.hexcasting.api.casting.iota.EntityIota;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -35,27 +37,16 @@ public class CombineEntities implements SpellAction {
 	public SpellAction.Result execute(List<? extends Iota> stack, CastingEnvironment ctx) {
 		SpellList list = OperatorUtils.getList(stack, 0, getArgc());
 		if (list.size() == 0) throw MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
-		SpellListIterator it = list.iterator();
-		ArrayList<ItemEntity> items = new ArrayList<>();
-		ArrayList<ItemStack> inputs = new ArrayList<>();
 
-		while (it.hasNext()) {
-			Iota i = it.next();
-			MishapInvalidIota mishapBadList = MishapInvalidIota.ofType(i, 1, "abyssworks:itemlist.valid");
-			if (i.getType() != EntityIota.TYPE)
-				throw mishapBadList;
+		Function<Iota, ItemEntity> iotaToItem = i -> iotaToItem(i, stack);
+		List<ItemEntity> items = StreamSupport.stream(list.spliterator(), false).map(iotaToItem).collect(Collectors.toList());
 
-			EntityIota ent = (EntityIota)i;
-			if (ent.getEntity() instanceof ItemEntity item) {
-				items.add(item);
-				inputs.add(item.getStack());
-			}
-			else throw mishapBadList;
-		}
+		Function<ItemEntity, ItemStack> entToStack = i -> i.getStack();
+		List<ItemStack> inputs = items.stream().map(entToStack).collect(Collectors.toList());
 
 		ServerWorld world = ctx.getWorld();
 
-		MishapInvalidIota mishapBadRecipe = MishapInvalidIota.ofType(list.getCar(), 1, "abyssworks:combrecipe.valid");
+		MishapInvalidIota mishapBadRecipe = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:combrecipe.valid");
 
 		CombinationRecipe recipe = world.getRecipeManager().getFirstMatch(
 			CombinationRecipe.Type.INSTANCE, 
@@ -71,6 +62,16 @@ public class CombineEntities implements SpellAction {
 			List.of(ParticleSpray.burst(ctx.mishapSprayPos(), 2, 25)), 
 			1
 		);
+	}
+
+	public ItemEntity iotaToItem(Iota iota, List<? extends Iota> stack) {
+		MishapInvalidIota mishap = MishapInvalidIota.ofType(stack.get(0), 1, "abyssworks:itemlist.valid");
+		if (!(iota.getType() == EntityIota.TYPE))
+			throw mishap;
+		Entity ent = ((EntityIota)iota).getEntity();
+		if (!(ent instanceof ItemEntity))
+			throw mishap;
+		return (ItemEntity)ent;
 	}
 
 	public class Spell implements RenderedSpell {
